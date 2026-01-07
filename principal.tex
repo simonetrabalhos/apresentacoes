@@ -1,0 +1,537 @@
+\documentclass[xcolor={dvipsnames,table},14pt,aspectratio=169]{beamer}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+
+%-----------------------------------------------------------------------------------%
+
+% ------------------ Pacotes para a tabela -----------------------------------------%
+
+\usepackage{tabularx}                                                               
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{latexsym}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}	
+\usepackage{fancyhdr}
+\usepackage{breakurl}
+\usepackage{hyperref}
+%\usepackage{mathtools}
+
+%\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+%\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%-----------------------------------------------------------------------------------%
+
+\mode<presentation>{
+	\usetheme{Madrid} 
+	\useinnertheme{rounded}
+	\usecolortheme[named=purple]{structure}
+	\usefonttheme[onlymath]{serif} 	% fonte modo matematico
+}
+
+\title [Engenharia de Software]{ChatGPT for Learning HCI Techniques: A Case Study on Interviews for Personas}
+\author[Simone Santos]{Apresentado por: Simone de Oliveira Santos\\Programa de Pós-Graduação em Ciência da Computação}
+\institute[UECE]{ \includegraphics[scale=1]{figs/logo-uece}}
+\date{}
+
+
+%---------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+	
+	%-----------------------------------------------------------------------------------------------------------------------------
+	
+	\begin{frame}
+		
+		\titlepage
+		
+	\end{frame}
+	
+	%-----------------------------------------------------------------------------------------------------------------------------
+	
+	\begin {frame}{Preliminares}
+	
+	\begin{itemize}
+		\item Publicado no IEEE Transactions on Learning Technologies
+		\item Qualis A1
+		\item Ano de publicação 2024
+	\end{itemize}
+	
+	
+	\end {frame}
+	
+	%-----------------------------------------------------------------------------------------------------------------------------
+	
+	\begin {frame}{Preliminares}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{figs/capa}
+		\label{fig:capa}
+	\end{figure}
+	
+	\end {frame}
+	
+	%-----------------------------------------------------------------------------------------------------------------------------  
+	%                Introdução
+	%-----------------------------------------------------------------------------------------------------------------------------  
+	
+	
+	
+	\begin{frame}{Motivação} 
+		
+		\begin{itemize}
+			
+			\item Antes de interagir com usuários reais, desenvolvedores devem entender de IHC para \textbf{não desperdiçar a paciência e disponibilidade dos usuários}.
+			
+			\item Especialistas no campos de IHC passam por \textbf{treinamento} em várias técnicas.
+			
+			\item Necessidade de analisar usuários em potencial para os sistemas que são produzidos.
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Motivação}
+		
+		\begin{itemize}
+			\item Conduzir entrevistas \textbf{é desafiador}.
+			
+			\item Recrutar participantes, definir questões efetivas para obter respostas úteis é imperativo.
+			
+			\item Entrevistas de baixa qualidade comprometem a análise.
+			
+			\item Técnicas como a criação de \textbf{Personas} somente funciona através de uma \textbf{boa coleta de dados e análise do contexto de uso}.
+		\end{itemize}
+		
+	\end{frame}
+	
+	%%%-----------------------------------------------------------------------------------------------------------------------------
+	
+	\begin{frame}{Motivação}
+		
+		\begin{itemize}
+			
+			\item O surgimento das IA generativas e o seu uso como chatbots treinados (ChatGPT) oferece uma oportunidade uso para aprendizado.
+			
+			\item Estudos de caso recentes:
+			\begin{itemize}
+				\item aquisição de habilidades pedagógicas
+				
+				\item efeitos na motivação de estudantes e desempenho na aprendizagem
+				
+				\item sala de aula invertida
+			\end{itemize} 
+			
+		\end{itemize}
+		
+		
+		\end {frame}
+		
+		
+		
+		\begin{frame}{Lacuna identificada}
+			
+			\begin{block}{}
+				Uso de ChatGPT para o aprendizado de técnicas para o design centrado no usuário.
+			\end{block}
+			
+			\begin{flushleft}
+				Técnica alvo: Criação de \textbf{Personas}
+			\end{flushleft}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Personas}
+			
+			\begin{block}{}
+				No contexto de IHC, a criação de Personas é uma técnica usada para representar usuários reais e potenciais usuários para aplicações.
+			\end{block}
+			
+			Uma persona é:
+			\begin{itemize}
+				\item fictícia
+				\item uma representação realística de um usuário em potencial
+				\item exemplifica atitudes associadas ao contexto dos usuários em relação a um produto específico.
+			\end{itemize}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Problema}
+			
+			\begin{flushleft}
+				No contexto educacional é difícil treinar estudantes para conduzir atividades de IHC em contexto real.
+			\end{flushleft}
+			
+			Fatores limitantes:
+			\begin{itemize}
+				\item acesso limitado à usuários reais
+				\item limitações de tempo
+				\item \textbf{falta de prática e habilidades em entrevistas}
+			\end{itemize}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Problema}
+			
+			\begin{flushleft}
+				Para melhor entender a percepção dos problemas enfrentados, os pesquisadores conduziram um survey com estudantes de graduação.
+			\end{flushleft}
+			
+			Achados:
+			\begin{itemize}
+				\item Dificuldades de recrutamento
+				
+				\item Falta de variabilidade de usuários
+				
+				\item Definir questões de qualidade
+			\end{itemize}
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Objetivo}
+			
+			\begin{block}{}
+				O objetivo da pesquisa é estudar e validar se o ChatGPT, propriamente configurado e parametrizado, pode gerar informações fictícias mas de boa qualidade para ser usado como material de treinamento em IHC.
+			\end{block}
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Proposta}
+			
+			\begin{flushleft}
+				A questão central da pesquisa é se um chatbot baseado em LLM pode servir como uma \textbf{ferramenta educacional de treinamento} para atividades de IHC.
+			\end{flushleft}
+			
+			\begin{block}{Hipótese levantada}
+				ChatGPT pode melhorar a experiência educacional pela simulação de interações de conversa, e consequentemente, ajudar estudantes a aprender.
+			\end{block}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Questões de pesquisa}
+			
+			\begin{enumerate}
+				\item O ChatGPT pode representar um usuário fictício e crível através de uma configuração apropriada e um prompt único?
+				
+				\item É possível usar esses usuários fictícios para gerar um conjunto de entrevistas de alta qualidade que sirva como entrada válida para criar personas realísticas?
+			\end{enumerate}
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Proposta}
+			
+			\begin{block}{}
+				\textbf{Principal requisito}: que os resultados das entrevistas pudessem ser comparáveis, assim, foi usada a entrevista estruturada.
+			\end{block}
+			
+			\begin{block}{}
+				\textbf{Principal desafio}: operacionalizar o conceitos de ``usuário crível'' e ``entrevistas de qualidade''.
+			\end{block}
+			
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Proposta}
+			
+			\begin{block}{}
+				Como cenário de experimentação: foi usado o contexto e os dados de um projeto real que objetivava melhorar a intranet da universidade.
+			\end{block}
+			
+			\begin{flushleft}
+				Este projeto foi desenvolvido de acordo com o processo centrado no usuário com criação de 8 personas.
+			\end{flushleft}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Metodologia}
+			
+			\begin{flushleft}
+				A pesquisa foi estruturada com 4 grupos distintos:
+			\end{flushleft}
+			\begin{description}
+				\item[Supervisor] Coordenador dos times
+				
+				\item[Especialistas UX] Criam os prompts e entrevistas baseado no projeto original. Foram criados 40 usuários fictícios.
+				
+				\item[Profissionais UX] Conhecedores do projeto original.
+				
+				\item[Professores IHC] Avaliam a qualidade do material e criam personas baseado nas entrevistas geradas.
+			\end{description}
+			
+		\end{frame} 
+		
+		
+		
+		\begin{frame}
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.5\linewidth]{figs/metodologia}
+			\end{figure}
+			
+			
+		\end{frame} 
+		
+		%%
+		%%%-----------------------------------------------------------------------------------------------------------------------------
+		
+		\begin{frame}{Metodologia}
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{figs/metodologia-topo}
+			\end{figure}
+			
+			
+		\end{frame} 
+		
+		
+		
+		\begin{frame}{Metodologia}
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{figs/metodologia-base}
+			\end{figure}
+			
+			
+		\end{frame} 
+		
+		
+		\begin{frame}{Metodologia}
+			
+			\begin{flushleft}
+				O objetivo da análise foi determinar se as respostas geradas pelo ChatGPT poderia ser \textbf{corretamente associadas com as personas originais} e se foram \textbf{informativas o suficiente} para apoiar a criação de novas personas.
+			\end{flushleft}
+			
+		\end{frame}
+		%------------------------------------------------------------
+		%------------------------------------------------------------
+		
+		\begin{frame}{Medida de sucesso} 
+			
+			\begin{flushleft}
+				Recapitulando as questões de pesquisa:
+			\end{flushleft}
+			
+			\begin{itemize}
+				\item[RQ1] O ChatGPT pode representar um usuário fictício e crível através de uma configuração apropriada e um prompt único?
+				
+				\item[RQ2] É possível usar esses usuários fictícios para gerar um conjunto de entrevistas de alta qualidade que sirva como entrada válida para criar personas realísticas?
+			\end{itemize}
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Medida de sucesso} 
+			
+			\begin{itemize}
+				\item[RQ1] Os profissionais classificam as respostas geradas com relação às 8 personas de referência, se os usuários fictícios são críveis.
+				
+				\item[RQ2] A qualidade do material foi medida de duas formas:
+				\begin{description}
+					\item[Profissionais] a qualidade do material do ponto de vista técnico, se representa o domínio do projeto original.
+					\item[Professores] a qualidade do material do ponto de vista educacional, se é útil para criar personas.
+				\end{description}
+				
+				
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Template para criação de personas} 
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{figs/personas}
+			\end{figure}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Teste de operação do ChatGPT}	
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.5\linewidth]{figs/testeChat}
+			\end{figure}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Proposta de prompt}	
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{figs/perguntas}
+			\end{figure}
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Medida de sucesso}
+			
+			\begin{itemize}
+				\item Ao final do procedimento, os profissionais e professores devem responder a um questionário sobre a qualidade das entrevistas.
+				
+				\item Questões sobre formato da entrevista, informações relevantes, coerência das respostas, utilidade educacional, grau de simulação e ética.
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		%----------------------------------------------------------------
+		%----------------------------------------------------------------
+		
+		\begin{frame}{Resultados - RQ1 ``believability''}
+			
+			\begin{itemize}
+				\item De forma geral, os itens da entrevista \textbf{foram melhor avaliados pelos profissionais} do que pelos professores.
+				
+				\item Os profissionais já tinham conhecimento das personas do projeto original e apenas indicariam se a entrevista representava bem.
+				
+				\item Os professores precisavam das entrevistas para criar personas e foram mais críticos.
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Resultados - RQ1 ``believability''}
+			
+			\begin{flushleft}
+				Principais achados da avaliação qualitativa:
+			\end{flushleft}
+			
+			\begin{itemize}
+				\item  Respostas repetitivas, superficiais, e não elaboravam as respostas.
+				
+				\item Inconsistência na linguagem: muito boa para um estudante internacional, por exemplo, e inconsistência de gênero (Espanhol).
+				
+				\item Informações incompletas para criação de personas.
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Resultados - RQ1 ``believability''}
+			
+			\begin{itemize}
+				\item Apesar dos problemas, \textbf{a resposta à RQ1 foi positiva}.
+				
+				\item Considerando cada entrevista separadamente, ambos \textbf{consideraram os usuários fictícios críveis} para o contexto do sistema.
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Resultados - RQ2 ``quality''}
+			
+			\begin{itemize}
+				\item Os profissionais \textbf{relacionaram todas as entrevistas} com uma persona do projeto original, validando o processo de criação de prompts para gerar entrevistas com informações úteis.
+				
+				\item Os professores \textbf{foram capazes de gerar personas}, com exceção de uma, que casavam com as originais.
+			\end{itemize}
+			
+		\end{frame}
+		
+		\begin{frame}{Resultados - RQ2 ``quality''}
+			
+			\begin{itemize}
+				\item A resposta à pergunta foi considerada \textbf{positiva}.
+				
+				\item A maior limitação considerada foi a repetição do conteúdo devido à limitação de respostas do chat para uma melhor consistência e falta de elaboração das respostas.
+			\end{itemize}
+			
+			
+		\end{frame}
+		
+		
+		
+		\begin{frame}{Discussões - Limitações}
+			
+			\begin{itemize}
+				\item O prompt fornecia algumas alternativas para o chat assumir na criação de usuário, e o chat não elaborava na escolha e não randomizada nas escolhas, repetindo escolhas.
+				
+				\item O chat tende a escolher o gênero masculino (39 de 40).
+				
+				\item Possível viés dos professores que conhecem o tópico do contexto e conhecem os papéis do projeto.
+			\end{itemize}     
+			
+		\end{frame}
+		
+		
+		\begin{frame}{Discussões - Recomendações}
+			
+			
+			\begin{itemize}
+				\item Atenção ao trabalhar com mais de uma\textbf{ versão do ChatGPT} ou similares pois podem apresentar comportamentos diferentes.
+				
+				\item Em entrevistas, \textbf{simplificar e reduzir o número de perguntas}, pois ele pode juntar todas as respostas em uma só e depois repetia as respostas nas demais perguntas.
+				
+				\item \textbf{Não há garantia de diversidade} quando são fornecidas escolhas. É preciso explicitamente indicar variedade.
+			\end{itemize}
+			
+			
+			\end {frame}
+			
+			
+			\begin{frame}{Conclusões - Lições aprendidas}
+				
+				
+				\begin{itemize}
+					\item Entendimento do funcionamento de um chatbot baseado em LLM para fornecer boas instruções.
+					
+					\item Fornecer flexibilidade suficiente para evitar respostas repetidas. Tentativa e erro foi a forma encontrada para resolver a questão.
+					
+				\end{itemize}
+				
+				\begin{block}{}
+					Passo interessante para integrar tecnologias baseadas em LLM no \textbf{treinamento de técnicas de IHC}, sem intenção de substituir os usuários reais.
+				\end{block}
+				
+				\end {frame}
+				
+				
+				\begin{frame}
+					
+					\titlepage
+					
+				\end{frame}
+				
+				%-----------------------------------------------------------------------------------------------------------------------------
+				
+			\end{document}
