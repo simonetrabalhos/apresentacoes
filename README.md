@@ -1,2 +1,3 @@
-# apresentacoes
-Apresentações criadas em LaTeX
+# Apresentações
+
+Apresentações criadas em LaTeX.
